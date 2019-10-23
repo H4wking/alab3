@@ -9,14 +9,20 @@ class PairingMedian:
         self.high_size = 0
 
     def add_element(self, value):
-        if self.low_size == 0 or (value < self.h_low.max() and self.low_size - self.high_size < 1):
-            print("l", value)
+        if self.low_size == 0 or value < self.h_low.max():
             self.h_low.insert(value)
             self.low_size += 1
+            if self.low_size - self.high_size > 1:
+                self.h_high.insert(self.h_low.delete_max())
+                self.low_size -= 1
+                self.high_size += 1
         else:
-            print("h", value)
             self.h_high.insert(value)
             self.high_size += 1
+            if self.high_size - self.low_size > 1:
+                self.h_low.insert(self.h_high.delete_min())
+                self.high_size -= 1
+                self.low_size += 1
 
     def get_median(self):
         if (self.low_size + self.high_size) % 2 == 0:
@@ -26,22 +32,3 @@ class PairingMedian:
                 return self.h_low.max()
             else:
                 return self.h_high.min()
-
-
-import random
-
-
-a = list(range(1, 12))
-# random.shuffle(a)
-a.reverse()
-print(a)
-h = PairingMedian()
-for el in a:
-    h.add_element(el)
-    print(h.get_median())
-# for el in a:
-#     ha.add_element(el)
-#     print(ha.get_median())
-# print(h.h_low, h.h_high)
-print(h.get_median())
-# print(ha.get_median())

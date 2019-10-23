@@ -30,25 +30,3 @@ class Median:
 
     def get_minheap_elements(self):
         return self.h_high.heap
-
-
-import random
-
-
-a = list(range(1, 12))
-# random.shuffle(a)
-a.reverse()
-print(a)
-h = Median()
-for el in a:
-    h.add_element(el)
-    print(h.get_median())
-ha = Median()
-print(h.h_low, h.h_high)
-print(ha.h_low, ha.h_high)
-# for el in a:
-#     ha.add_element(el)
-#     print(ha.get_median())
-# print(h.h_low, h.h_high)
-print(h.get_median())
-# print(ha.get_median())

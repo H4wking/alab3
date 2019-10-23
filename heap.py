@@ -95,18 +95,3 @@ class MinHeap(Heap):
         self.heap_size += 1
         self.heap.append(- math.inf)
         self.change_key(self.heap_size - 1, key)
-
-
-
-# import random
-#
-#
-# a = list(range(1, 8))
-# random.shuffle(a)
-# print(a)
-# h = MinHeap(a)
-# print(h.heap)
-# h.extract_min()
-# print(h.heap)
-# h.insert(1)
-# print(h.heap)
